@@ -53,20 +53,13 @@ class DistinctPowers extends Command
      */
     public function getCount(int $a, int $b)
     {
-        $count = 0;
-
+        $array = [];
         for ($i = 2; $i <= $a; $i++) {
             for ($j = 2; $j <= $b; $j++) {
-                if (pow($j, $i) != pow($i, $j)) {
-                    $count++;
-                }
-
-                if ((pow($i, $j) == pow($j, $i) && $i < $j) OR ($i == $j)) {
-                    $count++;
-                }
+                array_push($array, pow($i, $j));
             }
         }
 
-        return $count;
+        return count(array_unique($array));
     }
 }
