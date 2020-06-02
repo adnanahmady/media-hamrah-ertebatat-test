@@ -6,8 +6,9 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-         <div class="container">
-	     @yield('content')
+         <div id="app">
+	         @yield('content')
+             <flash></flash>
          </div>
     </body>
     <script src="{{ asset('js/app.js') }}"></script>

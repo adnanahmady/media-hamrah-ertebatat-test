@@ -137,14 +137,18 @@ class RequestCurrencyList
     public function requestConvert(
         int $amount,
         string $symbol,
-        string $convert
+        string $convert,
+        string $time = null
     ) {
-
         $parameters = [
             'amount' => $amount,
             'symbol' => $symbol,
-            'convert' => $convert
+            'convert' => $convert,
         ];
+
+        if ($time !== null) {
+            $parameters['time'] = $time;
+        }
 
         try {
             return $this->Client->request(

@@ -15,7 +15,7 @@ class ConvertResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'price' => current($this->resource['quote'])['price']
+            'price' => (!! $this->resource) ? current($this->resource['quote'])['price'] : '0'
         ];
     }
 }

@@ -19,7 +19,8 @@ class RequestConvertController extends Controller
         $data = $this->getData($Convert->requestConvert(
             $request->get('amount'),
             $request->get('symbol'),
-            $request->get('convert')
+            $request->get('convert'),
+            $request->get('date')
         ));
 
         return new ConvertResource($data);

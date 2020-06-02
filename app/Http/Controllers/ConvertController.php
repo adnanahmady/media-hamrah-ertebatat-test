@@ -7,12 +7,11 @@ use App\Traits\CurrencyDataTrait;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ConvertController extends Controller
 {
     use CurrencyDataTrait;
-
-    protected $endPoint = 'https://pro-api.coinmarketcap.com/v1';
 
     public function index()
     {
@@ -22,6 +21,6 @@ class ConvertController extends Controller
             $CurrencyList->getCoins()
         );
 
-        return view('convert', compact('coins'));
+        return new Response($coins);
     }
 }

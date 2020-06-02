@@ -15,5 +15,3 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/converts', 'ConvertController@index');
-Route::post('/converts', 'RequestConvertController@convert');
