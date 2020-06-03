@@ -51,10 +51,15 @@ class Prime extends Command
      */
     public function checkPrime($number)
     {
-        $divisions = [2, 3, 5, 7, 11];
+        if (
+            ($number % 2 == 0 && $number > 2) ||
+            $number < 2
+        ) {
+            return false;
+        }
 
-        foreach ($divisions as $division) {
-            if (!is_float($number / $division)) {
+        for ($i = 3; $i < $number; $i += 2) {
+            if (($number - ($reminder = $number % $i)) == $number) { 
                 $this->info("Number $number is not a prime number");
 
                 return false;
