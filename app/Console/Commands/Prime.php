@@ -39,6 +39,8 @@ class Prime extends Command
 
         if ($this->checkPrime($number)) {
             $this->info("Number $number is a prime number");
+        } else {
+            $this->info("Number $number is not a prime number");
         }
     }
 
@@ -60,8 +62,6 @@ class Prime extends Command
 
         for ($i = 3; $i < $number; $i += 2) {
             if (($number - ($reminder = $number % $i)) == $number) { 
-                $this->info("Number $number is not a prime number");
-
                 return false;
             }
         }
