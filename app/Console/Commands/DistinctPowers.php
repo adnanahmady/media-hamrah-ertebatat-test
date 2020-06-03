@@ -54,12 +54,32 @@ class DistinctPowers extends Command
     public function getCount(int $a, int $b)
     {
         $array = [];
+
         for ($i = 2; $i <= $a; $i++) {
             for ($j = 2; $j <= $b; $j++) {
-                array_push($array, pow($i, $j));
+                if (! $this->isRepeated($array, $pow = (string) pow($i, $j))) {
+                    $array[] = $pow;
+                }
             }
         }
 
-        return count(array_unique($array));
+        return count($array);
+    }
+
+    /**
+     * checks if item already exists in array
+     *
+     * @param array $array
+     * @param string $item
+     */
+    public function isRepeated(array $array, string $item): bool
+    {
+        foreach ($array as $value) {
+            if ($item == $value) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
