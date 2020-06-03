@@ -36,22 +36,42 @@ class Prime extends Command
     public function handle()
     {
         $number = $this->ask('What is your number?');
+        $this->info("Please wait...");
+        $this->info("Prime number $number is: ".$this->getNumberth($number));
+    }
 
-        if ($this->checkPrime($number)) {
-            $this->info("Number $number is a prime number");
-        } else {
-            $this->info("Number $number is not a prime number");
+    /**
+     * returns nth prime number
+     *
+     * @param int $number
+     *
+     * @return int
+     */
+    public function getNumberth(int $number): int
+    {
+        $counter = 3;
+        $prime = 2;
+        $key = 1;
+
+        while($key < $number) {
+            if ($this->checkPrime($counter)) {
+                $key++;
+                $prime = $counter;
+            }
+            $counter += 2;
         }
+
+        return $prime;
     }
 
     /**
      * checks if number is prime or not
      *
-     * @param $number
+     * @param int $number
      *
      * @return bool
      */
-    public function checkPrime($number)
+    public function checkPrime(int $number): bool
     {
         if (
             ($number % 2 == 0 && $number > 2) ||
